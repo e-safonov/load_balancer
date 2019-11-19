@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  redis_local:
+    image: redis:alpine
+    container_name: redis
+    hostname: redis
+    volumes:
+      - ../data/redis:/data
+    restart: always
+    ports:
+      - 6379:6379
+
+  load_balancer:
+    build:
+      context: ./
+    depends_on:
+       - redis_local
+    ports:
+      - 9999:9999
+    links:
+      - redis_local

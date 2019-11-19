@@ -1,0 +1,9 @@
+__pycache__
+*.conf
+/.venv
+/.cache
+.tmp
+.idea
+*.iml
+venv/
+venv/*
