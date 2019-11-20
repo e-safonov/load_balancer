@@ -29,4 +29,3 @@ def test_urls_count():
     assert cdn_a_urls == app.config.CDN_A_WEIGHT
     assert cdn_b_urls == app.config.CDN_B_WEIGHT
     assert origin_urls == app.config.ORIGIN_WEIGHT
-

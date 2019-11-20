@@ -64,9 +64,7 @@ async def init_redis(app, loop):
 
 @app.listener('before_server_stop')
 async def close_redis(app, loop):
-    # if app:
-    #     await app.redis.close()
-    pass
+    await app.redis.wait_closed()
 
 
 if __name__ == '__main__':
