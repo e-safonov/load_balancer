@@ -15,4 +15,4 @@ COPY . /usr/src/app/
 
 WORKDIR /usr/src/app/
 EXPOSE 9999
-CMD ["python", "app.py"]
+CMD ["python", "balancer.py"]
