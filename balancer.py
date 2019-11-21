@@ -45,8 +45,8 @@ async def parse_url(origin_url=''):
 @app.route('/', methods=['GET'])
 async def main(request):
     video_url, origin_url = await parse_url(request.args.get('video'))
-    url = await get_url(video_url, origin_url)
-    return url
+    res = await get_url(video_url, origin_url)
+    return res
 
 
 @app.listener('before_server_start')
