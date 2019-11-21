@@ -12,7 +12,7 @@ app.config.from_pyfile('./config.py')
 async def create_round_robin():
     rr = list()
     rr += [app.config.CDN_A_HOST] * app.config.CDN_A_WEIGHT
-    rr += [app.config.CDN_B_HOST] * app.config.CDN_A_WEIGHT
+    rr += [app.config.CDN_B_HOST] * app.config.CDN_B_WEIGHT
     rr += ['origin'] * app.config.ORIGIN_WEIGHT
     random_shuffle(rr)
     return rr
