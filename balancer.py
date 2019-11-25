@@ -18,7 +18,7 @@ async def create_round_robin():
     return rr
 
 
-async def get_route(video_url=None, origin_url=None):
+async def get_route(video_url='', origin_url=''):
     if not (video_url and origin_url):
         return text('error url not valid url format')
 
