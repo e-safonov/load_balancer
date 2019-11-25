@@ -12,10 +12,9 @@ def test_urls_count():
     cdn_a_urls = 0
     cdn_b_urls = 0
     origin_urls = 0
-    client = app.test_client
     urls = []
-    for i in range(request_count):
-        request, responce = client.get('/', params=params)
+    for _ in range(request_count):
+        request, responce = app.test_client.get('/', params=params)
 
         if app.config.CDN_A_HOST in responce.text:
             cdn_a_urls += 1

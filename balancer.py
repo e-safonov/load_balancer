@@ -6,6 +6,7 @@ from aioredis import create_redis_pool
 
 
 app = Sanic()
+app.config.from_pyfile('./config.py')
 
 
 async def create_round_robin():
@@ -53,7 +54,7 @@ async def init_redis(app, loop):
     app.redis = await create_redis_pool(app.config.REDIS_URL)
     llen = await app.redis.llen('hosts')
     if app.config.REDIS_CLEAN_START:
-        await app.redis.delete('hosts')
+        await app.redis.flushdb()
         llen = 0
 
     if llen == 0:
@@ -68,5 +69,4 @@ async def close_redis(app, loop):
 
 
 if __name__ == '__main__':
-    app.config.from_pyfile('./config.py')
     app.run(host=app.config.HOST, port=app.config.PORT)
